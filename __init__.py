@@ -5,6 +5,9 @@ from Models import PrestamoLibro
 from Models import PrestamoCubiculo
 from Models import Cubiculo
 
+from Controllers import ControllerPrestarLibro
+from Controllers import ControllerPrestarCubiculo
+
 from Views import MenuPrincipal
 # Call the constructor of the class Estudiante
 estudiante1 = Estudiante.Estudiante(
@@ -20,7 +23,6 @@ libro1 = Libro.Libro(
 libro2 = Libro.Libro(
     "La cenicienta", "Pablo", "DevCorp", "0-4223-0451-6", "2018", True
 )
-
 # Call the constructor of the class Cubiculo
 cubiculo1 = Cubiculo.Cubiculo(1, 20, True, True)
 cubiculo2 = Cubiculo.Cubiculo(2, 10, True, False)
@@ -34,7 +36,14 @@ biblioteca = Biblioteca.Biblioteca(
     [cubiculo1, cubiculo2]
 )
 
-
+prestarLibro = ControllerPrestarLibro.ControllerPrestarLibro()
+prestarCubiculo = ControllerPrestarCubiculo.ControllerPrestarCubiculo()
 
 # Call the function menuPrincipal from the class MenuPrincipal
-MenuPrincipal.MenuPrincipal.menuPrincipal()
+opcion = MenuPrincipal.MenuPrincipal().menuPrincipal()
+if opcion == "1":
+    prestarLibro.controllerPrestarLibro(biblioteca)
+elif opcion == "2":
+    prestarCubiculo.controllerPrestarCubiculo(biblioteca)
+
+
